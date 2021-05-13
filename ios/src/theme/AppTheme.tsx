@@ -25,19 +25,27 @@ export const styles = StyleSheet.create({
         textAlign: "right"
     },
 
+    fila: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom: 18,
+        paddingHorizontal: 10
+    },
+
     boton: {
         height: 80,
         width: 80,
-        backgroundColor: '#9b9b9b',
+        backgroundColor: '#2d2d2d',
         borderRadius: 100,
         justifyContent: 'center',
+        marginHorizontal: 10
     },
 
     botonTexto: {
         textAlign: 'center',
         padding: 10,
         fontSize: 30,
-        color: 'black',
+        color: 'white',
         fontWeight: '300'
     }
 });
