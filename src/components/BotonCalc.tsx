@@ -1,26 +1,33 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { styles } from '../theme/AppTheme'
 
 interface Props {
-    texto: string,
-    color?: string,
-    colorTexto?: string
+    texto: string;
+    color?: string;
+    ancho?: boolean;
+    accion: ( numeroTexto: string ) => void;
 }
 
 
 
-export const BotonCalc = ({ texto, color='#2d2d2d', colorTexto= 'white' }: Props) => {
+export const BotonCalc = ({ texto, color='#2d2d2d', ancho = false, accion }: Props) => {
     return (
-        <View style={{
-                ...styles.boton,
-                backgroundColor: color
-            }}>
-            <Text style={{
+        
+        <TouchableOpacity onPress={ () => accion( texto ) }>
+
+            <View style={{
+                    ...styles.boton,
+                    backgroundColor: color,
+                    width: ( ancho ) ? 180 : 80
+                }}>
+                <Text style={{
                     ...styles.botonTexto,
-                    color: colorTexto
+                    color: ( color === '#9b9b9b' ) ? 'black' : 'white'
                 }} >{ texto }</Text>
-        </View>
+            </View>
+
+        </TouchableOpacity>
     )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaView, StatusBar } from 'react-native';
-import { CalculadoraScreen } from './ios/src/screens/CalculadoraScreen';
-import { styles } from './ios/src/theme/AppTheme';
+import { CalculadoraScreen } from './src/screens/CalculadoraScreen';
+import { styles } from './src/theme/AppTheme';
 
 const App = () => {
   return (
