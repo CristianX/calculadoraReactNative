@@ -11,7 +11,7 @@ enum Operadores {
 export const CalculadoraScreen = () => {
 
 
-    const [numeoAnterior, setNumeoAnterior] = useState('0');
+    const [numeroAnterior, setNumeoAnterior] = useState('0');
     const [numero, setNumero] = useState('0');
     const ultimaOperacion = useRef<Operadores>();
 
@@ -98,12 +98,40 @@ export const CalculadoraScreen = () => {
         ultimaOperacion.current = Operadores.sumar;
     }
 
+    const calcular = () => {
+        const num1 = Number( numero );
+        const num2 = Number( numeroAnterior );
+
+        switch ( ultimaOperacion.current ) {
+            case Operadores.sumar:
+                setNumero( `${ num1 + num2 }` );
+                break;
+
+            case Operadores.restar:
+                setNumero( `${ num2 - num1 }` );
+                break;
+
+            case Operadores.multiplicar:
+                setNumero( `${ num1 * num2 }` );
+                break;
+
+            case Operadores.dividir:
+                setNumero( `${ num2 / num1 }` );
+                break;
+        
+            default:
+                break;
+        }
+
+        setNumeoAnterior('0');
+    }
+
 
     return (
         <View style={ styles.calculadoraContainer } >
             {
-                (numeoAnterior !== '0' ) && (
-                    <Text style={ styles.resultadoPequeno } >{ numeoAnterior }</Text>
+                (numeroAnterior !== '0' ) && (
+                    <Text style={ styles.resultadoPequeno } >{ numeroAnterior }</Text>
                     
                 )
             }
@@ -146,7 +174,7 @@ export const CalculadoraScreen = () => {
              <View style={ styles.fila }>
                 <BotonCalc texto="0" ancho accion={ armarNumero } />
                 <BotonCalc texto="." accion={ armarNumero } />
-                <BotonCalc texto="=" color="#ff9427" accion={ armarNumero }  />
+                <BotonCalc texto="=" color="#ff9427" accion={ calcular }  />
             </View>
             
         </View>
