@@ -44,8 +44,14 @@ export const CalculadoraScreen = () => {
         } else {
             setNumero( numero + numeroTexto );
         }
+    }
 
-
+    const btnDelete = () => {
+        if( numero.length == 1 || ( numero.startsWith('-') && numero.length == 2 ) ){
+            setNumero('0');
+        } else {
+            setNumero( numero.slice( 0, -1 ) );
+        }
     }
 
     const positivoNegativo = () => {
@@ -66,7 +72,7 @@ export const CalculadoraScreen = () => {
             <View style={ styles.fila }>
                 <BotonCalc texto="C" color="#9b9b9b" accion= { limpiar }  />
                 <BotonCalc texto="+/-" color="#9b9b9b" accion={ positivoNegativo }  />
-                <BotonCalc texto="del" color="#9b9b9b" accion={ armarNumero }  />
+                <BotonCalc texto="del" color="#9b9b9b" accion={ btnDelete }  />
                 <BotonCalc texto="/" color="#ff9427" accion={ armarNumero }  />
             </View>
 
